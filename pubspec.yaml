@@ -1,6 +1,6 @@
 name: statusbarz
 description: A Flutter package for dynamically changing status bar color
-version: 0.0.1
+version: 1.0.0
 homepage: https://mapventure.com
 
 environment:
