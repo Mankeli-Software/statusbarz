@@ -1,14 +1,50 @@
-# statusbarz
+# Statusbarz: a Flutter dynamic status bar plugin
+
+---
 
 A Flutter package for dynamically changing status bar color
 
-## Getting Started
+## Features
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+---
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+A Flutter package for dynamically changing status bar color based on the background. Can be set up to automatically change the color whenever the current route is changed. It is also possible to manually refresh the color.
+
+## Usage
+
+---
+
+Place `StatusbarzCapturer` above your `MaterialApp` widget:
+
+```dart
+void main() {
+  runApp(
+    StatusbarzCapturer(
+      child: MaterialApp(
+        home: Container(),
+      ),
+    ),
+  );
+}
+```
+
+Now you can manually refresh status bar color by calling:
+
+```dart
+Statusbarz.instance.refresh();
+```
+
+Or alternatively you can refresh automatically when the current route changes. To do this, simply add `Statusbarz.instance.observer` to your `MaterialApp`s `navigatorObservers`:
+
+```dart
+void main() {
+  runApp(
+    StatusbarzCapturer(
+      child: MaterialApp(
+        navigatorObservers: [Statusbarz.instance.observer],
+        home: Container(),
+      ),
+    ),
+  );
+}
+```
