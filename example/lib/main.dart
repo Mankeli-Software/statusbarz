@@ -1,4 +1,3 @@
-import 'package:example/routeA.dart';
 import 'package:flutter/material.dart';
 import 'package:statusbarz/statusbarz.dart';
 
@@ -14,6 +13,45 @@ class MyApp extends StatelessWidget {
         navigatorObservers: [Statusbarz.instance.observer],
         title: 'Statusbarz example',
         home: RouteA(),
+      ),
+    );
+  }
+}
+
+class RouteA extends StatelessWidget {
+  const RouteA({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.black,
+      child: Center(
+        child: ElevatedButton(
+          child: Text('Change screen to B'),
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => RouteB()));
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class RouteB extends StatelessWidget {
+  const RouteB({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.white,
+      child: Center(
+        child: ElevatedButton(
+          child: Text('Change screen to A'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
     );
   }

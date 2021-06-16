@@ -1,6 +1,4 @@
-# Statusbarz: a Flutter dynamic status bar plugin
-
-A Flutter package for dynamically changing status bar color
+# Dynamic status bar plugin
 
 ## Features
 

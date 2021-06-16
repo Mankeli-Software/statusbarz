@@ -38,6 +38,13 @@ class Statusbarz {
   /// Returns the key that shall be placed ONLY in StatusbarzObserver
   GlobalKey get key => _key;
 
+  /// Changes status bar color based on the current background
+  ///
+  /// ### Important
+  /// This operation is computationally expensive to calculate, so therefore must be used with caution.
+  /// ### Error handling
+  /// Throws an [StatusbarzException] if no StatusbarzCapturer found from widget tree.
+  ///
   /// [Statusbarz.instance.observer] shall be placed inside [MaterialApp] in order to change status bar color automatically when new page is pushed/popped:
   /// ```dart
   /// void main() {
@@ -51,18 +58,13 @@ class Statusbarz {
   ///   );
   /// }
   /// ```
-
-  /// Changes status bar color based on the current background
   ///
-  /// ### Important
-  /// This operation is computationally expensive to calculate, so therefore must be used with caution.
-  /// ### Error handling
-  /// Throws an [StatusbarzException] if no StatusbarzCapturer found from widget tree.
   /// See also:
   ///
   ///  * [StatusbarzCapturer], the widget used to find the currently rendered object
   ///  * [StatusbarzObserver], the observer used to listen to route changes
-  Future<void> refresh({Duration delay = const Duration(milliseconds: 10)}) async {
+  Future<void> refresh(
+      {Duration delay = const Duration(milliseconds: 10)}) async {
     return Future.delayed(
       delay,
       () async {
@@ -73,13 +75,15 @@ class Statusbarz {
         }
 
         /// Finds currently rendered UI
-        RenderRepaintBoundary? boundary = context.findRenderObject() as RenderRepaintBoundary?;
+        RenderRepaintBoundary? boundary =
+            context.findRenderObject() as RenderRepaintBoundary?;
 
         /// Converts rendered UI to png
         var capturedImage = await boundary!.toImage(
           pixelRatio: 1.0,
         );
-        var byteData = await capturedImage.toByteData(format: ImageByteFormat.png);
+        var byteData =
+            await capturedImage.toByteData(format: ImageByteFormat.png);
         final bytes = byteData!.buffer.asUint8List();
 
         var bitmap = img.decodeImage(bytes);
@@ -104,7 +108,8 @@ class Statusbarz {
           }
         }
 
-        var averageColor = Color.fromRGBO(red ~/ pixels, green ~/ pixels, blue ~/ pixels, 1);
+        var averageColor =
+            Color.fromRGBO(red ~/ pixels, green ~/ pixels, blue ~/ pixels, 1);
 
         /// Computes the luminance. Note: This is computationally expensive.
         var luminance = averageColor.computeLuminance();
