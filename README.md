@@ -1,18 +1,12 @@
 # Statusbarz: a Flutter dynamic status bar plugin
 
----
-
 A Flutter package for dynamically changing status bar color
 
 ## Features
 
----
-
 A Flutter package for dynamically changing status bar color based on the background. Can be set up to automatically change the color whenever the current route is changed. It is also possible to manually refresh the color.
 
 ## Usage
-
----
 
 Place `StatusbarzCapturer` above your `MaterialApp` widget:
 
