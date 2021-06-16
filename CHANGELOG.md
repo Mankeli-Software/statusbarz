@@ -1,10 +1,7 @@
-## 0.0.1
+## 1.0.2
 
-- Initial release
-
-## 1.0.0
-
-- Improved README.md
+- added repository to metadata
+- added issue_tracker to metadata
 
 ## 1.0.1
 
@@ -12,7 +9,10 @@
 - Improved Example
 - Improved formating
 
-## 1.0.2
+## 1.0.0
 
-- added repository to metadata
-- added issue_tracker to metadata
+- Improved README.md
+
+## 0.0.1
+
+- Initial release
