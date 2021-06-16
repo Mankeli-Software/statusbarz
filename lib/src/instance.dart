@@ -1,53 +1,70 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart' hide Image;
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:statusbarz/errors.dart';
+import 'package:statusbarz/src/observer.dart';
+import 'package:statusbarz/src/errors.dart';
+import 'package:statusbarz/src/styles.dart';
 
-import 'package:statusbarz/styles.dart';
 import 'package:image/image.dart' as img;
 
 class Statusbarz {
   static final GlobalKey _key = GlobalKey();
   static final Statusbarz _instance = Statusbarz._constructor();
-  static final RouteObserver<ModalRoute<void>> _routeObserver = RouteObserver<ModalRoute<void>>();
+  static final StatusbarzObserver _observer = StatusbarzObserver();
 
   Statusbarz._constructor();
 
   /// Returns the interface that can be used to manually refresh the status bar color
   static Statusbarz get instance => _instance;
 
-  /// Returns the key that shall be placed ONLY in StatusbarzObserver
-  GlobalKey get key => _key;
-
-  /// routeObserver shall be placed inside materialApp in order to change status bar color automatically when new page is pushed:
+  /// Navigator observer to place inside MaterialApp:
   /// ```dart
   /// void main() {
   ///   runApp(
-  ///     StatusbarzObserver(
+  ///     StatusbarzCapturer(
   ///       child: MaterialApp(
-  ///         navigatorObservers: [Statusbarz.instance.routeObserver],
+  ///         navigatorObservers: [Statusbarz.instance.observer],
   ///         home: Container(),
   ///       ),
   ///     ),
   ///   );
   /// }
   /// ```
-  RouteObserver<ModalRoute<void>> get routeObserver => _routeObserver;
+  StatusbarzObserver get observer => _observer;
+
+  /// Returns the key that shall be placed ONLY in StatusbarzObserver
+  GlobalKey get key => _key;
+
+  /// [Statusbarz.instance.observer] shall be placed inside [MaterialApp] in order to change status bar color automatically when new page is pushed/popped:
+  /// ```dart
+  /// void main() {
+  ///   runApp(
+  ///     StatusbarzCapturer(
+  ///       child: MaterialApp(
+  ///         navigatorObservers: [Statusbarz.instance.observer],
+  ///         home: Container(),
+  ///       ),
+  ///     ),
+  ///   );
+  /// }
+  /// ```
 
   /// Changes status bar color based on the current background
   ///
   /// ### Important
   /// This operation is computationally expensive to calculate, so therefore must be used with caution.
   /// ### Error handling
-  /// Throws an [StatusbarzException] if no StatusbarzObserver found from widget tree.
+  /// Throws an [StatusbarzException] if no StatusbarzCapturer found from widget tree.
   /// See also:
   ///
-  ///  * [StatusbarzObserver], the widget used to find the currently rendered object
-  Future<void> refresh() async {
+  ///  * [StatusbarzCapturer], the widget used to find the currently rendered object
+  ///  * [StatusbarzObserver], the observer used to listen to route changes
+  Future<void> refresh({Duration delay = const Duration(milliseconds: 10)}) async {
     return Future.delayed(
-      const Duration(milliseconds: 10),
+      delay,
       () async {
         final context = _key.currentContext;
         if (context == null) {
@@ -71,12 +88,12 @@ class Statusbarz {
         var green = 0;
         var blue = 0;
         var pixels = 0;
-
-        /// Gets the height of the status bar for the current device
-        final statusHeight = MediaQuery.of(context).viewPadding.top.toInt();
+        final window = WidgetsBinding.instance?.window;
+        final mediaQuery = MediaQueryData.fromWindow(window!);
+        final statusHeight = mediaQuery.padding.top.clamp(20.0, 150.0);
 
         /// Calculates the average color for the status bar
-        for (var y = 0; y < statusHeight; y++) {
+        for (var y = 0; y < statusHeight.toInt(); y++) {
           for (var x = 0; x < bitmap!.width; x++) {
             var c = bitmap.getPixel(x, y);
 

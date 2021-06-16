@@ -1,4 +1,4 @@
 library statusbarz;
 
-export 'widget.dart';
-export 'instance.dart';
+export 'src/instance.dart';
+export 'src/capturer.dart';
