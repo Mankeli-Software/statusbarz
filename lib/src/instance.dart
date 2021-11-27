@@ -15,6 +15,8 @@ class Statusbarz {
   static final Statusbarz _instance = Statusbarz._constructor();
   static final StatusbarzObserver _observer = StatusbarzObserver();
 
+  Duration _defaultDelay = const Duration(milliseconds: 10);
+
   Statusbarz._constructor();
 
   /// Returns the interface that can be used to manually refresh the status bar color
@@ -34,6 +36,8 @@ class Statusbarz {
   /// }
   /// ```
   StatusbarzObserver get observer => _observer;
+
+  set setDefaultDelay(Duration delay) => _defaultDelay = delay;
 
   /// Returns the key that shall be placed ONLY in StatusbarzObserver
   GlobalKey get key => _key;
@@ -63,10 +67,11 @@ class Statusbarz {
   ///
   ///  * [StatusbarzCapturer], the widget used to find the currently rendered object
   ///  * [StatusbarzObserver], the observer used to listen to route changes
-  Future<void> refresh(
-      {Duration delay = const Duration(milliseconds: 10)}) async {
+  Future<void> refresh({
+    Duration? delay,
+  }) async {
     return Future.delayed(
-      delay,
+      delay ?? _defaultDelay,
       () async {
         final context = _key.currentContext;
         if (context == null) {
@@ -75,15 +80,13 @@ class Statusbarz {
         }
 
         /// Finds currently rendered UI
-        RenderRepaintBoundary? boundary =
-            context.findRenderObject() as RenderRepaintBoundary?;
+        RenderRepaintBoundary? boundary = context.findRenderObject() as RenderRepaintBoundary?;
 
         /// Converts rendered UI to png
         var capturedImage = await boundary!.toImage(
           pixelRatio: 1.0,
         );
-        var byteData =
-            await capturedImage.toByteData(format: ImageByteFormat.png);
+        var byteData = await capturedImage.toByteData(format: ImageByteFormat.png);
         final bytes = byteData!.buffer.asUint8List();
 
         var bitmap = img.decodeImage(bytes);
@@ -108,8 +111,7 @@ class Statusbarz {
           }
         }
 
-        var averageColor =
-            Color.fromRGBO(red ~/ pixels, green ~/ pixels, blue ~/ pixels, 1);
+        var averageColor = Color.fromRGBO(red ~/ pixels, green ~/ pixels, blue ~/ pixels, 1);
 
         /// Computes the luminance. Note: This is computationally expensive.
         var luminance = averageColor.computeLuminance();

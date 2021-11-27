@@ -1,3 +1,7 @@
+## 1.0.3
+
+- added ability to add custom delay while refreshing automatically
+
 ## 1.0.2
 
 - added repository to metadata
