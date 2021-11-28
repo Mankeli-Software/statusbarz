@@ -118,11 +118,19 @@ class Statusbarz {
 
         /// Updates status bar color
         if (luminance > 0.5) {
-          SystemChrome.setSystemUIOverlayStyle(getDarkStatusBar());
+          setDarkStatusBar();
         } else {
-          SystemChrome.setSystemUIOverlayStyle(getLightStatusBar());
+          setLightStatusBar();
         }
       },
     );
+  }
+
+  void setDarkStatusBar() {
+    SystemChrome.setSystemUIOverlayStyle(getDarkStatusBar());
+  }
+
+  void setLightStatusBar() {
+    SystemChrome.setSystemUIOverlayStyle(getLightStatusBar());
   }
 }

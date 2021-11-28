@@ -1,3 +1,8 @@
+## 1.0.4
+
+- made it possible to change the status bar color (to dark or light) without doing all the heavy calculations
+- the color can now be set through Statusbarz.instance.setDarkStatusBar() and Statusbarz.instance.setLightStatusBar()
+
 ## 1.0.3
 
 - added ability to add custom delay while refreshing automatically
