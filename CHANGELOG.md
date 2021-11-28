@@ -1,3 +1,7 @@
+## 1.0.5
+
+- updated commenting
+
 ## 1.0.4
 
 - made it possible to change the status bar color (to dark or light) without doing all the heavy calculations

@@ -126,10 +126,12 @@ class Statusbarz {
     );
   }
 
+  /// Changes the text and icon color on the statusbar to a dark color
   void setDarkStatusBar() {
     SystemChrome.setSystemUIOverlayStyle(getDarkStatusBar());
   }
 
+  /// Changes the text and icon color on the statusbar to a light color
   void setLightStatusBar() {
     SystemChrome.setSystemUIOverlayStyle(getLightStatusBar());
   }
