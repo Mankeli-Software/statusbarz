@@ -1,3 +1,7 @@
+## 1.0.6
+
+- fixed problem with formatting
+
 ## 1.0.5
 
 - updated commenting
