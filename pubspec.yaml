@@ -1,6 +1,6 @@
 name: statusbarz
 description: A Flutter package for dynamically changing status bar color based on the background. Works with static colors and images.
-version: 1.0.6
+version: 1.0.7
 homepage: https://mapventure.com
 repository: https://github.com/Mapventure/statusbarz
 issue_tracker: https://github.com/Mapventure/statusbarz/issues
