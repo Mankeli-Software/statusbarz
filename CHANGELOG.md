@@ -1,3 +1,7 @@
+## 1.0.8
+
+- fixed problem with formatting
+
 ## 1.0.7
 
 - fixed problem with static analysis (unused import)
