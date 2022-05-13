@@ -1,3 +1,7 @@
+## 1.0.9
+
+- migrated to flutter 3.0
+
 ## 1.0.8
 
 - fixed problem with formatting
