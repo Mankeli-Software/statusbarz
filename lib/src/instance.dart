@@ -79,15 +79,13 @@ class Statusbarz {
         }
 
         /// Finds currently rendered UI
-        RenderRepaintBoundary? boundary =
-            context.findRenderObject() as RenderRepaintBoundary?;
+        RenderRepaintBoundary? boundary = context.findRenderObject() as RenderRepaintBoundary?;
 
         /// Converts rendered UI to png
         var capturedImage = await boundary!.toImage(
           pixelRatio: 1.0,
         );
-        var byteData =
-            await capturedImage.toByteData(format: ImageByteFormat.png);
+        var byteData = await capturedImage.toByteData(format: ImageByteFormat.png);
         final bytes = byteData!.buffer.asUint8List();
 
         var bitmap = img.decodeImage(bytes);
@@ -96,8 +94,8 @@ class Statusbarz {
         var green = 0;
         var blue = 0;
         var pixels = 0;
-        final window = WidgetsBinding.instance?.window;
-        final mediaQuery = MediaQueryData.fromWindow(window!);
+        final window = WidgetsBinding.instance.window;
+        final mediaQuery = MediaQueryData.fromWindow(window);
         final statusHeight = mediaQuery.padding.top.clamp(20.0, 150.0);
 
         /// Calculates the average color for the status bar
@@ -112,8 +110,7 @@ class Statusbarz {
           }
         }
 
-        var averageColor =
-            Color.fromRGBO(red ~/ pixels, green ~/ pixels, blue ~/ pixels, 1);
+        var averageColor = Color.fromRGBO(red ~/ pixels, green ~/ pixels, blue ~/ pixels, 1);
 
         /// Computes the luminance. Note: This is computationally expensive.
         var luminance = averageColor.computeLuminance();
