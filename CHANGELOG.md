@@ -1,3 +1,7 @@
+## 1.0.10
+
+- fixed problem with static analysis
+
 ## 1.0.9
 
 - migrated to flutter 3.0
