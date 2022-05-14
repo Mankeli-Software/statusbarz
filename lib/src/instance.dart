@@ -96,7 +96,7 @@ class Statusbarz {
         var green = 0;
         var blue = 0;
         var pixels = 0;
-        final window = WidgetsBinding.instance!.window;
+        final window = WidgetsBinding.instance.window;
         final mediaQuery = MediaQueryData.fromWindow(window);
         final statusHeight = mediaQuery.padding.top.clamp(20.0, 150.0);
 

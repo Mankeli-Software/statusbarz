@@ -1,3 +1,7 @@
+## 1.0.11
+
+- fixed problem with static analysis
+
 ## 1.0.10
 
 - fixed problem with static analysis
