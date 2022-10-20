@@ -1,3 +1,7 @@
+## 1.0.12
+
+- added ability to change the colors and themes used by statusbarz
+
 ## 1.0.11
 
 - fixed problem with static analysis

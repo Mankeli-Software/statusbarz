@@ -13,6 +13,7 @@ class Statusbarz {
   static final GlobalKey _key = GlobalKey();
   static final Statusbarz _instance = Statusbarz._constructor();
   static final StatusbarzObserver _observer = StatusbarzObserver();
+  StatusbarzTheme theme = StatusbarzTheme();
 
   Duration _defaultDelay = const Duration(milliseconds: 10);
 
@@ -20,6 +21,9 @@ class Statusbarz {
 
   /// Returns the interface that can be used to manually refresh the status bar color
   static Statusbarz get instance => _instance;
+
+  /// Setter for the theme
+  void setTheme(StatusbarzTheme theme) => this.theme = theme;
 
   /// Navigator observer to place inside MaterialApp:
   /// ```dart
@@ -130,11 +134,11 @@ class Statusbarz {
 
   /// Changes the text and icon color on the statusbar to a dark color
   void setDarkStatusBar() {
-    SystemChrome.setSystemUIOverlayStyle(getDarkStatusBar());
+    SystemChrome.setSystemUIOverlayStyle(theme.darkStatusBar);
   }
 
   /// Changes the text and icon color on the statusbar to a light color
   void setLightStatusBar() {
-    SystemChrome.setSystemUIOverlayStyle(getLightStatusBar());
+    SystemChrome.setSystemUIOverlayStyle(theme.lightStatusBar);
   }
 }

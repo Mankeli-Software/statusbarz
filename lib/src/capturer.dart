@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:statusbarz/src/styles.dart';
 import 'package:statusbarz/statusbarz.dart';
 
 class StatusbarzCapturer extends StatelessWidget {
   final Widget child;
+  final StatusbarzTheme? theme;
 
   /// This must be placed above MaterialApp for Statusbarz to work.
   /// ```dart
@@ -22,10 +24,12 @@ class StatusbarzCapturer extends StatelessWidget {
   const StatusbarzCapturer({
     Key? key,
     required this.child,
+    this.theme,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    if (theme != null) Statusbarz.instance.setTheme(theme!);
     return RepaintBoundary(
       key: Statusbarz.instance.key,
       child: child,
