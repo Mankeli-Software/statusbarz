@@ -102,9 +102,7 @@ class Statusbarz {
 
         final bitmap = img.decodeImage(bytes);
 
-        var red = 0;
-        var green = 0;
-        var blue = 0;
+        var luminance = 0.0;
         var pixels = 0;
         final window = WidgetsBinding.instance.window;
         final mediaQuery = MediaQueryData.fromWindow(window);
@@ -114,26 +112,15 @@ class Statusbarz {
         for (var yCoord = 0; yCoord < statusHeight.toInt(); yCoord++) {
           for (var xCoord = 0; xCoord < bitmap!.width; xCoord++) {
             final pixel = bitmap.getPixel(xCoord, yCoord);
-
+            luminance += pixel.luminance;
             pixels++;
-            red += img.getRed(pixel);
-            green += img.getGreen(pixel);
-            blue += img.getBlue(pixel);
           }
         }
 
-        final averageColor = Color.fromRGBO(
-          red ~/ pixels,
-          green ~/ pixels,
-          blue ~/ pixels,
-          1,
-        );
-
-        /// Computes the luminance. Note: This is computationally expensive.
-        final luminance = averageColor.computeLuminance();
+        final avgLuminance = luminance / pixels;
 
         /// Updates status bar color
-        if (luminance > 0.5) {
+        if (avgLuminance > 0.5) {
           setDarkStatusBar();
         } else {
           setLightStatusBar();
