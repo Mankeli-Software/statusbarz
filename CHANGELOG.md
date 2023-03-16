@@ -1,3 +1,9 @@
+## 1.0.13
+
+- upgraded dependencies
+- added mankeli_analysis linting
+- updated README.md
+
 ## 1.0.12
 
 - added ability to change the colors and themes used by statusbarz

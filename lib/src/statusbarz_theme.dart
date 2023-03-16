@@ -1,7 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+/// {@template statusbarz_theme}
+/// The default theme for the `Statusbarz`
+/// {@endtemplate}
 class StatusbarzTheme {
+  /// {@macro statusbarz_theme}
+  StatusbarzTheme({
+    this.darkStatusBar = const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.white,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+    this.lightStatusBar = const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.black,
+      systemNavigationBarIconBrightness: Brightness.light,
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.light,
+    ),
+  });
+
   /// The `SystemUiOverlayStyle` to apply when the background behind status bar is light. This shall
   /// use dark icons etc. Defaults to:
   /// ```dart
@@ -27,21 +48,4 @@ class StatusbarzTheme {
   ///  )
   /// ```
   final SystemUiOverlayStyle lightStatusBar;
-
-  StatusbarzTheme({
-    this.darkStatusBar = const SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.white,
-      systemNavigationBarIconBrightness: Brightness.dark,
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.dark,
-    ),
-    this.lightStatusBar = const SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.black,
-      systemNavigationBarIconBrightness: Brightness.light,
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.light,
-    ),
-  });
 }

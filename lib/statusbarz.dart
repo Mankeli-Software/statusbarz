@@ -1,5 +1,5 @@
 library statusbarz;
 
-export 'src/instance.dart';
-export 'src/capturer.dart';
-export 'src/styles.dart';
+export 'src/statusbarz.dart';
+export 'src/statusbarz_capturer.dart';
+export 'src/statusbarz_theme.dart';
