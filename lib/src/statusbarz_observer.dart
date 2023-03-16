@@ -32,6 +32,7 @@ class StatusbarzObserver extends NavigatorObserver {
         /// Assures there are not duplicate listeners
         route.animation!.removeStatusListener(_routeRemovedListener);
         route.animation!.addStatusListener(_routeRemovedListener);
+
         return;
       }
     }
@@ -47,6 +48,7 @@ class StatusbarzObserver extends NavigatorObserver {
         /// Assures there are not duplicate listeners
         route.animation!.removeStatusListener(_routeAddedListener);
         route.animation!.addStatusListener(_routeAddedListener);
+
         return;
       }
     }
