@@ -85,11 +85,13 @@ class Statusbarz {
       delay ?? _defaultDelay,
       () async {
         final context = _key.currentContext;
+
         if (context == null) {
           throw StatusbarzException(
             'No StatusbarzObserver found from widget tree. StatusbarzObserver shall be added above MaterialApp in your widget tree.',
           );
         }
+        final view = View.of(context);
 
         /// Finds currently rendered UI
         final boundary = context.findRenderObject() as RenderRepaintBoundary?;
@@ -104,8 +106,9 @@ class Statusbarz {
 
         var luminance = 0.0;
         var pixels = 0;
-        final window = WidgetsBinding.instance.window;
-        final mediaQuery = MediaQueryData.fromWindow(window);
+        //final window = WidgetsBinding.instance.window;
+
+        final mediaQuery = MediaQueryData.fromView(view);
         final statusHeight = mediaQuery.padding.top.clamp(20.0, 150.0);
 
         /// Calculates the average color for the status bar
