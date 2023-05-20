@@ -1,0 +1,6 @@
+# Shareholders team is the default code owner for everything. 
+# Specific files or folders can be overridden by entering other
+# individual owners / teams below this line. For more details,
+# please see https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners#example-of-a-codeowners-file
+
+* @Mankeli-Software/shareholders

@@ -1,0 +1,10 @@
+{
+    "todo_comment": {
+        "prefix": "todo_comment",
+        
+        "body": [
+            "$LINE_COMMENT TODO(${1|O-Hannonen,JTorkk,AkJkSenpai,JareCoder|}): ${2:describe what to do}",
+        ],
+        "description": "Todo comment",
+    },
+}

@@ -1,0 +1,248 @@
+{
+  "template_comment": {
+    "scope": "dart",
+    "prefix": "template_comment",
+    "body": [
+      "/// {@template ${1:$TM_FILENAME_BASE}}",
+      "/// ${2:comment}",
+      "/// {@endtemplate}"
+    ],
+    "description": "template comment"
+  },
+  "template_macro": {
+    "scope": "dart",
+    "prefix": "template_macro",
+    "body": ["/// {@macro ${1:$TM_FILENAME_BASE}}"],
+    "description": "macro to template comment"
+  },
+  "freezed_class": {
+    "scope": "dart",
+    "prefix": "freezed_class",
+    "body": [
+      "@freezed",
+      "class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}  with _$${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} {",
+      "    const factory ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}({",
+      "      ${2:String name,}",
+      "    }) = _${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}};",
+      "}"
+    ],
+    "description": "Freezed class"
+  },
+  "freezed_from_json": {
+    "scope": "dart",
+    "prefix": "freezed_from_json",
+    "body": [
+      "  factory ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}.fromJson(Map<String, dynamic> json) => _\\$${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}FromJson(json);",
+    ],
+    "description": "Freezed class fromJson"
+  },
+  "gen_part": {
+    "scope": "dart",
+    "prefix": "gen_part",
+    "body": [
+      "part '$TM_FILENAME_BASE.gen.dart'",
+    ],
+    "description": ".gen.dart suffix part of import"
+  },
+  "g_part": {
+    "scope": "dart",
+    "prefix": "g_part",
+    "body": [
+      "part '$TM_FILENAME_BASE.g.dart'",
+    ],
+    "description": ".g.dart suffix part of import"
+  },
+  "gr_part": {
+    "scope": "dart",
+    "prefix": "gr_part",
+    "body": [
+      "part '$TM_FILENAME_BASE.gr.dart'",
+    ],
+    "description": ".gr.dart suffix part of import"
+  },
+  "stateless_widget": {
+    "scope": "dart",
+    "prefix": "stateless_widget",
+    "body": [
+      "class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} extends StatelessWidget {",
+      "  const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}({super.key});",
+      "",
+      "  @override",
+      "  Widget build(BuildContext context) {",
+      "    return ${2:Container()};",
+      "  }",
+      "}"
+    ],
+    "description": "Stateless widget"
+  },
+  "stateful_widget": {
+    "scope": "dart",
+    "prefix": "stateful_widget",
+    "body": [
+      "class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}} extends StatefulWidget {",
+      "  const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}({super.key});",
+      "",
+      "  @override",
+      "  State<${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}> createState() => _${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}State();",
+      "}",
+      "",
+      "class _${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}State extends State<${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}> {",
+      "  @override",
+      "  Widget build(BuildContext context) {",
+      "    return ${2:Container()};",
+      "  }",
+      "}"
+    ],
+    "description": "Stateful widget"
+  },
+  "extension": {
+    "scope": "dart",
+    "prefix": "extension",
+    "body": [
+      "extension ${1:${TM_FILENAME_BASE/(.*)(_extension)/${1:/pascalcase}/g}}Extension on ${1:${TM_FILENAME_BASE/(.*)(_extension)/${1:/pascalcase}/g}} {",
+      "",
+      "}"
+    ],
+    "description": "Stateful widget"
+  },
+  "dispose": {
+    "scope": "dart",
+    "prefix": "dispose",
+    "body": [
+      "@override",
+      "Future<void> dispose() {",
+      "  return super.dispose();",
+      "}"
+    ],
+    "description": "Dispose"
+  },
+  "dispose_sync": {
+    "scope": "dart",
+    "prefix": "dispose_sync",
+    "body": ["@override", "void dispose() {", "  return super.dispose();", "}"],
+    "description": "Dispose sync"
+  },
+  "close": {
+    "scope": "dart",
+    "prefix": "close",
+    "body": [
+      "@override",
+      "Future<void> close() {",
+      "  return super.close();",
+      "}"
+    ],
+    "description": "Close"
+  },
+  "close_sync": {
+    "scope": "dart",
+    "prefix": "close_sync",
+    "body": ["@override", "void close() {", "  return super.close();", "}"],
+    "description": "Close sync"
+  },
+  "initialize": {
+    "scope": "dart",
+    "prefix": "initialize",
+    "body": [
+      "@override",
+      "Future<void> initialize() {",
+      "  return super.initialize();",
+      "}"
+    ],
+    "description": "Initialize"
+  },
+  "initialize_sync": {
+    "scope": "dart",
+    "prefix": "initialize_sync",
+    "body": [
+      "@override",
+      "void initialize() {",
+      "  return super.initialize();",
+      "}"
+    ],
+    "description": "Initialize sync"
+  },
+  "main": {
+    "scope": "dart",
+    "prefix": "main",
+    "body": [
+      "Future<void> main() async {",
+      "  $1",
+      "}"
+    ],
+    "description": "Main method"
+  },
+  "main_sync": {
+    "scope": "dart",
+    "prefix": "main_sync",
+    "body": [
+      "void main() {",
+      "  $1",
+      "}"
+    ],
+    "description": "Main method sync"
+  },
+  "test_group": {
+    "scope": "dart",
+    "prefix": "test_group",
+    "body": ["group('$1', (){", "  $2", "});"],
+    "description": "A group to use in tests"
+  },
+  "test": {
+    "scope": "dart",
+    "prefix": "test",
+    "body": ["test(", "  '$1 '", "  '$2',", "  () {$3},", ");"],
+    "description": "A test case to use in tests"
+  },
+  "test_widget": {
+    "scope": "dart",
+    "prefix": "test_widget",
+    "body": [
+      "testWidgets(",
+      "  '$1 '",
+      "  '$2',",
+      "  (tester) async {$3},",
+      ");"
+    ],
+    "description": "A test case to use to test widgets"
+  },
+  "test_cubit": {
+    "scope": "dart",
+    "prefix": "test_cubit",
+    "body": [
+      "blocTest<$1Cubit, $1State>(",
+      "  '$2 '",
+      "  '$3',",
+      "  setUp: () => null,",
+      "  build: () => $1Cubit(),",
+      "  seed: () => const $1State(),",
+      "  act: (cubit) => null,",
+      "  expect: () => <$1State>[],",
+      "  verify: (cubit) => null,",
+      ");"
+    ],
+    "description": "A test case to use to test cubits"
+  },
+  "test_bloc": {
+    "scope": "dart",
+    "prefix": "test_bloc",
+    "body": [
+      "blocTest<$1Bloc, $1State>(",
+      "  '$2 '",
+      "  '$3',",
+      "  setUp: () => null,",
+      "  build: () => $1Bloc(),",
+      "  seed: () => const $1State(),",
+      "  act: (bloc) => null,",
+      "  expect: () => <$1State>[],",
+      "  verify: (bloc) => null,",
+      ");"
+    ],
+    "description": "A test case to use to test blocs"
+  },
+  "mock": {
+    "scope": "dart",
+    "prefix": "mock",
+    "body": ["class Mock$1 extends Mock implements $1 {}"],
+    "description": "A snippet for creating mock classes"
+  }
+}

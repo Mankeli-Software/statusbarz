@@ -1,0 +1,27 @@
+{
+	"arb_entry": {
+        "prefix": "arb_entry",
+        "body": [
+            "\"${1:example_key}\": \"${2:Example value}\",",
+            "\"@${1:my_example_keykey}\": {",
+			"    \"description\": \"${3:Example description}\"",
+			"},"
+        ],
+        "description": ".arb entry"
+    },
+	"arb_entry_variable": {
+        "prefix": "arb_entry_variable",
+        "body": [
+            "\"${1:example_key}\": \"${2:Example value} {${3:example_vriable}}\",",
+            "\"@${1:example_key}\": {",
+			"    \"description\": \"${4:Example description}\"",
+			"    \"placeholders\": {",
+			"       \"${3:example_vriable}\": {",
+			"           \"example\": \"${5:Placeholder value}\"",
+			"       }",
+			"    }",
+			"},"
+        ],
+        "description": ".arb entry with a variable string"
+    },
+}

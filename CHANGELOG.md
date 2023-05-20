@@ -1,3 +1,9 @@
+# statusbarz changelog
+
+## 1.0.14
+
+- fixes README formatting
+
 ## 1.0.13
 
 - upgraded dependencies

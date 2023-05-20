@@ -1,0 +1,50 @@
+name: "🐛 bug"
+description: Create a new ticket for a bug.
+title: "bug: "
+labels: [
+  "fix"
+]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: Please enter an explicit description of the bug
+      placeholder: I would propose...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: "Steps to reproduce"
+      description: How can we reproduce the bug?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: freeword
+    attributes:
+      label: "Free word"
+      description: Add any additional details or context
+      placeholder: I would like to point that...
+    validations:
+      required: false
+  - type: dropdown
+    id: platform
+    attributes:
+      label: "Platform"
+      description: What is the impacted environment?
+      multiple: true
+      options:
+        - IOS
+        - Android
+        - Mac
+        - Windows
+        - Linux
+        - Web
+    validations:
+      required: false

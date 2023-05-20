@@ -1,0 +1,14 @@
+{
+    "hours_wasted_comment": {
+        "prefix": "hours_wasted_comment",
+        "body": [
+            "$BLOCK_COMMENT_START",
+            "This bug has proven to be a real time sink. Please keep the counter up to date",
+            "so that we can keep track of how much time we have wasted on this.",
+            "",
+            "var HOURS_WASTED = ${1:0}h;",
+            "$BLOCK_COMMENT_END"
+        ],
+        "description": "comment indicating hours wasted with a bug"
+    },
+}

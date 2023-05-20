@@ -1,0 +1,34 @@
+{
+  "mit_license_badge": {
+    "scope": "markdown",
+    "prefix": "mit_license_badge",
+    "body": [
+      "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
+    ],
+    "description": "MIT license badge"
+  },
+  "bsd_3_clause_license_badge": {
+    "scope": "markdown",
+    "prefix": "bsd_3_clause_license_badge",
+    "body": [
+      "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)"
+    ],
+    "description": "BSD 3-clause license badge"
+  },
+  "buy_me_a_coffee_badge": {
+    "scope": "markdown",
+    "prefix": "buy_me_a_coffee_badge",
+    "body": [
+      "[![\"Buy Me A Coffee\"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/mankeli)"
+    ],
+    "description": "Buy Me A coffee badge"
+  },
+  "mankeli_analysis_badge": {
+    "scope": "markdown",
+    "prefix": "mankeli_analysis_badge",
+    "body": [
+      "[![style: mankeli analysis](https://img.shields.io/badge/style-mankeli__analysis-blue)](https://pub.dev/packages/mankeli_analysis)"
+    ],
+    "description": "Mankeli Analysis badge"
+  }
+}

@@ -1,0 +1,31 @@
+name: "✨ feature"
+description: Create a new ticket for a new feature.
+title: "feature: "
+labels: [
+  "feat"
+]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: Please enter an explicit description of your feature request
+      placeholder: I would propose...
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: "Motivation"
+      description: Tell more about why this feature is needed
+      placeholder: I hate it when...
+    validations:
+      required: true
+  - type: textarea
+    id: freeword
+    attributes:
+      label: "Free word"
+      description: Add any additional details or context
+      placeholder: I would like to point that...
+    validations:
+      required: false

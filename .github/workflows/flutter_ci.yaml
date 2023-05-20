@@ -22,10 +22,13 @@ jobs:
         run: flutter pub get
         
       - name: Verify formatting
-        run: dart format .
+        run: dart format . --fix
 
       - name: Analyze project source
         run: flutter analyze . --fatal-infos --no-pub
+
+      - name: Run tests
+        run: flutter test --no-pub
 
       - uses: EndBug/add-and-commit@v9
         with:
